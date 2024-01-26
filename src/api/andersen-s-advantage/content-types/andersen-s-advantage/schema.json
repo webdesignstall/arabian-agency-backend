@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "andersen_s_advantages",
+  "info": {
+    "singularName": "andersen-s-advantage",
+    "pluralName": "andersen-s-advantages",
+    "displayName": "Andersen's advantage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "blocks"
+    }
+  }
+}
