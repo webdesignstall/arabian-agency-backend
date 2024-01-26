@@ -1023,6 +1023,58 @@ export interface ApiHomePageHomePage extends Schema.CollectionType {
   };
 }
 
+export interface ApiInterviewCatagorieInterviewCatagorie
+  extends Schema.CollectionType {
+  collectionName: 'interview_catagories';
+  info: {
+    singularName: 'interview-catagorie';
+    pluralName: 'interview-catagories';
+    displayName: 'Interview Catagories';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    video_interviews: Attribute.Relation<
+      'api::interview-catagorie.interview-catagorie',
+      'oneToMany',
+      'api::video-interview.video-interview'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::interview-catagorie.interview-catagorie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::interview-catagorie.interview-catagorie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::interview-catagorie.interview-catagorie',
+      'oneToMany',
+      'api::interview-catagorie.interview-catagorie'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiTopDownFooterOfficeTopDownFooterOffice
   extends Schema.CollectionType {
   collectionName: 'top_down_footer_offices';
@@ -1352,6 +1404,52 @@ export interface ApiTopFooterTechStackTopFooterTechStack
   };
 }
 
+export interface ApiVideoInterviewVideoInterview extends Schema.CollectionType {
+  collectionName: 'video_interviews';
+  info: {
+    singularName: 'video-interview';
+    pluralName: 'video-interviews';
+    displayName: 'Video Interview';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    interview_catagory: Attribute.Relation<
+      'api::video-interview.video-interview',
+      'manyToOne',
+      'api::interview-catagorie.interview-catagorie'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::video-interview.video-interview',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::video-interview.video-interview',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::video-interview.video-interview',
+      'oneToMany',
+      'api::video-interview.video-interview'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1373,12 +1471,14 @@ declare module '@strapi/types' {
       'api::ai-develoment-scope.ai-develoment-scope': ApiAiDevelomentScopeAiDevelomentScope;
       'api::andersen-s-advantage.andersen-s-advantage': ApiAndersenSAdvantageAndersenSAdvantage;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::interview-catagorie.interview-catagorie': ApiInterviewCatagorieInterviewCatagorie;
       'api::top-down-footer-office.top-down-footer-office': ApiTopDownFooterOfficeTopDownFooterOffice;
       'api::top-footer-company.top-footer-company': ApiTopFooterCompanyTopFooterCompany;
       'api::top-footer-industrie.top-footer-industrie': ApiTopFooterIndustrieTopFooterIndustrie;
       'api::top-footer-project.top-footer-project': ApiTopFooterProjectTopFooterProject;
       'api::top-footer-service.top-footer-service': ApiTopFooterServiceTopFooterService;
       'api::top-footer-tech-stack.top-footer-tech-stack': ApiTopFooterTechStackTopFooterTechStack;
+      'api::video-interview.video-interview': ApiVideoInterviewVideoInterview;
     }
   }
 }
