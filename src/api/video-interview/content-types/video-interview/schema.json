@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "video_interviews",
+  "info": {
+    "singularName": "video-interview",
+    "pluralName": "video-interviews",
+    "displayName": "Video Interview",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "interview_catagory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::interview-catagorie.interview-catagorie",
+      "inversedBy": "video_interviews"
+    }
+  }
+}
