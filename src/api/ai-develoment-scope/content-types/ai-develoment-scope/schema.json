@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ai_develoment_scopes",
+  "info": {
+    "singularName": "ai-develoment-scope",
+    "pluralName": "ai-develoment-scopes",
+    "displayName": "Ai Develoment Scope"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
+    }
+  }
+}
