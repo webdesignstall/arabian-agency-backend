@@ -768,59 +768,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiAndersenSAdvantageAndersenSAdvantage
-  extends Schema.CollectionType {
-  collectionName: 'andersen_s_advantages';
-  info: {
-    singularName: 'andersen-s-advantage';
-    pluralName: 'andersen-s-advantages';
-    displayName: "Andersen's advantage";
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    title: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    description: Attribute.Blocks &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::andersen-s-advantage.andersen-s-advantage',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::andersen-s-advantage.andersen-s-advantage',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::andersen-s-advantage.andersen-s-advantage',
-      'oneToMany',
-      'api::andersen-s-advantage.andersen-s-advantage'
-    >;
-    locale: Attribute.String;
-  };
-}
-
 export interface ApiHomePageHomePage extends Schema.CollectionType {
   collectionName: 'home_pages';
   info: {
@@ -970,12 +917,249 @@ export interface ApiHomePageHomePage extends Schema.CollectionType {
   };
 }
 
+export interface ApiHomeSection2HomeSection2 extends Schema.CollectionType {
+  collectionName: 'home_section_2s';
+  info: {
+    singularName: 'home-section-2';
+    pluralName: 'home-section-2s';
+    displayName: 'Home Section 2';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    Title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-section-2.home-section-2',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-section-2.home-section-2',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home-section-2.home-section-2',
+      'oneToMany',
+      'api::home-section-2.home-section-2'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHomeSection3HomeSection3 extends Schema.CollectionType {
+  collectionName: 'home_section_3s';
+  info: {
+    singularName: 'home-section-3';
+    pluralName: 'home-section-3s';
+    displayName: 'Home Section 3';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    thumbnail: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    logo: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-section-3.home-section-3',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-section-3.home-section-3',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home-section-3.home-section-3',
+      'oneToMany',
+      'api::home-section-3.home-section-3'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHomeSectionFourHomeSectionFour
+  extends Schema.CollectionType {
+  collectionName: 'home-section-four';
+  info: {
+    singularName: 'home-section-four';
+    pluralName: 'home-section-fours';
+    displayName: 'Home Section 4';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    technologies: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-section-four.home-section-four',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-section-four.home-section-four',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home-section-four.home-section-four',
+      'oneToMany',
+      'api::home-section-four.home-section-four'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHomeSectionNineHomeSectionNine
+  extends Schema.CollectionType {
+  collectionName: 'home-section-nines';
+  info: {
+    singularName: 'home-section-nine';
+    pluralName: 'home-section-nines';
+    displayName: 'Home Section 9';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-section-nine.home-section-nine',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-section-nine.home-section-nine',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home-section-nine.home-section-nine',
+      'oneToMany',
+      'api::home-section-nine.home-section-nine'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiHomeSectionOneHomeSectionOne extends Schema.CollectionType {
   collectionName: 'home-section-one';
   info: {
     singularName: 'home-section-one';
     pluralName: 'home-section-ones';
-    displayName: 'Home Section One';
+    displayName: 'Home Section 1';
   };
   options: {
     draftAndPublish: true;
@@ -1017,111 +1201,6 @@ export interface ApiHomeSectionOneHomeSectionOne extends Schema.CollectionType {
       'api::home-section-one.home-section-one',
       'oneToMany',
       'api::home-section-one.home-section-one'
-    >;
-    locale: Attribute.String;
-  };
-}
-
-export interface ApiInterviewCatagorieInterviewCatagorie
-  extends Schema.CollectionType {
-  collectionName: 'interview_catagories';
-  info: {
-    singularName: 'interview-catagorie';
-    pluralName: 'interview-catagories';
-    displayName: 'Interview Catagories';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    title: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    video_interviews: Attribute.Relation<
-      'api::interview-catagorie.interview-catagorie',
-      'oneToMany',
-      'api::video-interview.video-interview'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::interview-catagorie.interview-catagorie',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::interview-catagorie.interview-catagorie',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::interview-catagorie.interview-catagorie',
-      'oneToMany',
-      'api::interview-catagorie.interview-catagorie'
-    >;
-    locale: Attribute.String;
-  };
-}
-
-export interface ApiTechnologiesSectionTechnologiesSection
-  extends Schema.CollectionType {
-  collectionName: 'technologies_sections';
-  info: {
-    singularName: 'technologies-section';
-    pluralName: 'technologies-sections';
-    displayName: 'Technologies Section';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    technologies: Attribute.Media &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    name: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::technologies-section.technologies-section',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::technologies-section.technologies-section',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::technologies-section.technologies-section',
-      'oneToMany',
-      'api::technologies-section.technologies-section'
     >;
     locale: Attribute.String;
   };
@@ -1456,88 +1535,6 @@ export interface ApiTopFooterTechStackTopFooterTechStack
   };
 }
 
-export interface ApiVideoInterviewVideoInterview extends Schema.CollectionType {
-  collectionName: 'video_interviews';
-  info: {
-    singularName: 'video-interview';
-    pluralName: 'video-interviews';
-    displayName: 'Video Interview';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    interview_catagory: Attribute.Relation<
-      'api::video-interview.video-interview',
-      'manyToOne',
-      'api::interview-catagorie.interview-catagorie'
-    >;
-    Title: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Description: Attribute.Text &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Thumbnail: Attribute.Media &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    videoUrl: Attribute.Text &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    Date: Attribute.Date &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    videoDuration: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::video-interview.video-interview',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::video-interview.video-interview',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::video-interview.video-interview',
-      'oneToMany',
-      'api::video-interview.video-interview'
-    >;
-    locale: Attribute.String;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1556,18 +1553,18 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::andersen-s-advantage.andersen-s-advantage': ApiAndersenSAdvantageAndersenSAdvantage;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::home-section-2.home-section-2': ApiHomeSection2HomeSection2;
+      'api::home-section-3.home-section-3': ApiHomeSection3HomeSection3;
+      'api::home-section-four.home-section-four': ApiHomeSectionFourHomeSectionFour;
+      'api::home-section-nine.home-section-nine': ApiHomeSectionNineHomeSectionNine;
       'api::home-section-one.home-section-one': ApiHomeSectionOneHomeSectionOne;
-      'api::interview-catagorie.interview-catagorie': ApiInterviewCatagorieInterviewCatagorie;
-      'api::technologies-section.technologies-section': ApiTechnologiesSectionTechnologiesSection;
       'api::top-down-footer-office.top-down-footer-office': ApiTopDownFooterOfficeTopDownFooterOffice;
       'api::top-footer-company.top-footer-company': ApiTopFooterCompanyTopFooterCompany;
       'api::top-footer-industrie.top-footer-industrie': ApiTopFooterIndustrieTopFooterIndustrie;
       'api::top-footer-project.top-footer-project': ApiTopFooterProjectTopFooterProject;
       'api::top-footer-service.top-footer-service': ApiTopFooterServiceTopFooterService;
       'api::top-footer-tech-stack.top-footer-tech-stack': ApiTopFooterTechStackTopFooterTechStack;
-      'api::video-interview.video-interview': ApiVideoInterviewVideoInterview;
     }
   }
 }

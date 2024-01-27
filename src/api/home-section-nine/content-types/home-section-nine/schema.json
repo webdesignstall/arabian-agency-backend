@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "home-section-one",
+  "collectionName": "home-section-nines",
   "info": {
-    "singularName": "home-section-one",
-    "pluralName": "home-section-ones",
-    "displayName": "Home Section 1"
+    "singularName": "home-section-nine",
+    "pluralName": "home-section-nines",
+    "displayName": "Home Section 9"
   },
   "options": {
     "draftAndPublish": true
@@ -29,7 +29,7 @@
           "localized": true
         }
       },
-      "type": "richtext"
+      "type": "blocks"
     }
   }
 }
