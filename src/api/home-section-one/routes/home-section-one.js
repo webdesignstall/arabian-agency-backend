@@ -6,4 +6,4 @@
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::ai-develoment-scope.ai-develoment-scope');
+module.exports = createCoreRouter('api::home-section-one.home-section-one');

@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "ai_develoment_scopes",
+  "collectionName": "home-section-one",
   "info": {
-    "singularName": "ai-develoment-scope",
-    "pluralName": "ai-develoment-scopes",
-    "displayName": "Ai Develoment Scope"
+    "singularName": "home-section-one",
+    "pluralName": "home-section-ones",
+    "displayName": "Home Section One"
   },
   "options": {
     "draftAndPublish": true

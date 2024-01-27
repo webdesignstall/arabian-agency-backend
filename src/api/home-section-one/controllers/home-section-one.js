@@ -6,4 +6,4 @@
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::ai-develoment-scope.ai-develoment-scope');
+module.exports = createCoreController('api::home-section-one.home-section-one');
