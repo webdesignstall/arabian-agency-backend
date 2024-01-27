@@ -768,59 +768,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiAiDevelomentScopeAiDevelomentScope
-  extends Schema.CollectionType {
-  collectionName: 'ai_develoment_scopes';
-  info: {
-    singularName: 'ai-develoment-scope';
-    pluralName: 'ai-develoment-scopes';
-    displayName: 'Ai Develoment Scope';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    title: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    description: Attribute.RichText &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::ai-develoment-scope.ai-develoment-scope',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::ai-develoment-scope.ai-develoment-scope',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::ai-develoment-scope.ai-develoment-scope',
-      'oneToMany',
-      'api::ai-develoment-scope.ai-develoment-scope'
-    >;
-    locale: Attribute.String;
-  };
-}
-
 export interface ApiAndersenSAdvantageAndersenSAdvantage
   extends Schema.CollectionType {
   collectionName: 'andersen_s_advantages';
@@ -1018,6 +965,58 @@ export interface ApiHomePageHomePage extends Schema.CollectionType {
       'api::home-page.home-page',
       'oneToMany',
       'api::home-page.home-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHomeSectionOneHomeSectionOne extends Schema.CollectionType {
+  collectionName: 'home-section-one';
+  info: {
+    singularName: 'home-section-one';
+    pluralName: 'home-section-ones';
+    displayName: 'Home Section One';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-section-one.home-section-one',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-section-one.home-section-one',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home-section-one.home-section-one',
+      'oneToMany',
+      'api::home-section-one.home-section-one'
     >;
     locale: Attribute.String;
   };
@@ -1557,9 +1556,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::ai-develoment-scope.ai-develoment-scope': ApiAiDevelomentScopeAiDevelomentScope;
       'api::andersen-s-advantage.andersen-s-advantage': ApiAndersenSAdvantageAndersenSAdvantage;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::home-section-one.home-section-one': ApiHomeSectionOneHomeSectionOne;
       'api::interview-catagorie.interview-catagorie': ApiInterviewCatagorieInterviewCatagorie;
       'api::technologies-section.technologies-section': ApiTechnologiesSectionTechnologiesSection;
       'api::top-down-footer-office.top-down-footer-office': ApiTopDownFooterOfficeTopDownFooterOffice;

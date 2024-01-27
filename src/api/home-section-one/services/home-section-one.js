@@ -6,4 +6,4 @@
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::ai-develoment-scope.ai-develoment-scope');
+module.exports = createCoreService('api::home-section-one.home-section-one');
