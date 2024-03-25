@@ -53,5 +53,13 @@ module.exports = ({ env }) => ({
     enabled: true,
     // resolve: "./src/plugins/strapi-plugin-ckeditor"
   },
+ezforms:{
+    config:{
+      captchaProvider: {
+        name: 'none',
+      },
+      notificationProviders: []
+    }
+}
 });
 

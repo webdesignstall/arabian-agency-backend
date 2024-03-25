@@ -3364,6 +3364,13 @@ axios@1.6.0:
     form-data "^4.0.0"
     proxy-from-env "^1.1.0"
 
+axios@^0.24.0:
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.24.0.tgz#804e6fa1e4b9c5288501dd9dff56a7a0940d20d6"
+  integrity sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==
+  dependencies:
+    follow-redirects "^1.14.4"
+
 axios@^0.26.1:
   version "0.26.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.26.1.tgz#1ede41c51fcf51bbbd6fd43669caaa4f0495aaa9"
@@ -5208,7 +5215,7 @@ fn.name@1.x.x:
   resolved "https://registry.yarnpkg.com/fn.name/-/fn.name-1.1.0.tgz#26cad8017967aea8731bc42961d04a3d5988accc"
   integrity sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==
 
-follow-redirects@^1.14.8, follow-redirects@^1.15.0, follow-redirects@^1.15.4:
+follow-redirects@^1.14.4, follow-redirects@^1.14.8, follow-redirects@^1.15.0, follow-redirects@^1.15.4:
   version "1.15.5"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.5.tgz#54d4d6d062c0fa7d9d17feb008461550e3ba8020"
   integrity sha512-vSFWUON1B+yAw1VN4xMfxgn5fTUiaOzAJCKBwIIgT/+7CuGy9+r+5gITvP62j3RmaD5Ph65UaERdOSRGUzZtgw==
@@ -9291,6 +9298,13 @@ statuses@2.0.1, statuses@^2.0.1:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha512-OpZ3zP+jT1PI7I8nemJX4AKmAX070ZkYPVWV/AaKTJl+tXCTGyVdC1a4SL8RUQYEwk/f34ZX8UTykN68FwrqAA==
+
+strapi-plugin-ezforms@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/strapi-plugin-ezforms/-/strapi-plugin-ezforms-0.1.7.tgz#e29ff92c1de29c6d64a3ee2ca56728cd7c950013"
+  integrity sha512-7ZR3/KMgt8v+nLrQoSBCEpZpC3mFSV7tL813+Y5wlraZDK4aPYoo21nkm87vkQdQEfUsoLpm6xL7vxuXYADXSA==
+  dependencies:
+    axios "^0.24.0"
 
 strapi-plugin-netlify-deployments@^2.0.2:
   version "2.0.2"
