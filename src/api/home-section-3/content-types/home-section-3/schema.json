@@ -4,7 +4,8 @@
   "info": {
     "singularName": "home-section-3",
     "pluralName": "home-section-3s",
-    "displayName": "Home Section 3"
+    "displayName": "Home Section 3",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -24,11 +25,12 @@
       "type": "text"
     },
     "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -36,29 +38,28 @@
       }
     },
     "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
     },
-    "content": {
+    "tab": {
+      "displayName": "tab1",
+      "type": "component",
+      "repeatable": true,
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
-      "type": "customField",
-      "options": {
-        "output": "HTML",
-        "preset": "rich"
-      },
-      "customField": "plugin::ckeditor.CKEditor"
+      "component": "tab.tab1"
     }
   }
 }

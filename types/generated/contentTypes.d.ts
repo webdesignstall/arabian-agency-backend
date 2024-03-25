@@ -573,6 +573,110 @@ export interface PluginContentReleasesReleaseAction
   };
 }
 
+export interface PluginEzformsSubmission extends Schema.CollectionType {
+  collectionName: 'ezforms_submission';
+  info: {
+    tableName: 'submission';
+    singularName: 'submission';
+    pluralName: 'submissions';
+    displayName: 'Form Submissions';
+    description: 'A Place for all your form submissions';
+    kind: 'collectionType';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: true;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    score: Attribute.String &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 50;
+      }>;
+    formName: Attribute.String &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 50;
+      }>;
+    data: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::ezforms.submission',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::ezforms.submission',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginEzformsRecipient extends Schema.CollectionType {
+  collectionName: 'ezforms_recipient';
+  info: {
+    tableName: 'recipients';
+    singularName: 'recipient';
+    pluralName: 'recipients';
+    displayName: 'Notification Recipients';
+    description: 'List of Notification Recipients';
+    kind: 'collectionType';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: true;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 50;
+      }>;
+    email: Attribute.String &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 50;
+      }>;
+    number: Attribute.String &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 50;
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::ezforms.recipient',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::ezforms.recipient',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginI18NLocale extends Schema.CollectionType {
   collectionName: 'i18n_locale';
   info: {
@@ -768,6 +872,363 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiContactUsFormCategoryContactUsFormCategory
+  extends Schema.CollectionType {
+  collectionName: 'contact_us_form_categories';
+  info: {
+    singularName: 'contact-us-form-category';
+    pluralName: 'contact-us-form-categories';
+    displayName: 'Contact Us Form Category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact-us-form-category.contact-us-form-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact-us-form-category.contact-us-form-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::contact-us-form-category.contact-us-form-category',
+      'oneToMany',
+      'api::contact-us-form-category.contact-us-form-category'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiContactUsFormTextContactUsFormText
+  extends Schema.CollectionType {
+  collectionName: 'contact_us_form_texts';
+  info: {
+    singularName: 'contact-us-form-text';
+    pluralName: 'contact-us-form-texts';
+    displayName: 'Contact US Form  Text';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    subTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    body: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    CustomerWhoTrustUs: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact-us-form-text.contact-us-form-text',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact-us-form-text.contact-us-form-text',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::contact-us-form-text.contact-us-form-text',
+      'oneToMany',
+      'api::contact-us-form-text.contact-us-form-text'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiFooterContactUsFooterContactUs
+  extends Schema.CollectionType {
+  collectionName: 'footer_contact_uses';
+  info: {
+    singularName: 'footer-contact-us';
+    pluralName: 'footer-contact-uses';
+    displayName: 'Footer Contact us';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    physicalAddress: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    email: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    phoneNumber: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    qrcode: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::footer-contact-us.footer-contact-us',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::footer-contact-us.footer-contact-us',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::footer-contact-us.footer-contact-us',
+      'oneToMany',
+      'api::footer-contact-us.footer-contact-us'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiFotterSocialMediaFotterSocialMedia
+  extends Schema.CollectionType {
+  collectionName: 'fotter_social_medias';
+  info: {
+    singularName: 'fotter-social-media';
+    pluralName: 'fotter-social-medias';
+    displayName: 'Footer Social Media';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    socialIcon: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    link: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::fotter-social-media.fotter-social-media',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::fotter-social-media.fotter-social-media',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::fotter-social-media.fotter-social-media',
+      'oneToMany',
+      'api::fotter-social-media.fotter-social-media'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiGeneralGeneral extends Schema.CollectionType {
+  collectionName: 'generals';
+  info: {
+    singularName: 'general';
+    pluralName: 'generals';
+    displayName: 'General';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    logoName: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    logo: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    favicon: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    footerCopyRight: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::general.general',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::general.general',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::general.general',
+      'oneToMany',
+      'api::general.general'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHeaderMenuHeaderMenu extends Schema.CollectionType {
+  collectionName: 'header_menus';
+  info: {
+    singularName: 'header-menu';
+    pluralName: 'header-menus';
+    displayName: 'Header Menu';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    link: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::header-menu.header-menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::header-menu.header-menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::header-menu.header-menu',
+      'oneToMany',
+      'api::header-menu.header-menu'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiHomePageHomePage extends Schema.CollectionType {
   collectionName: 'home_pages';
   info: {
@@ -809,88 +1270,106 @@ export interface ApiHomePageHomePage extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    developmentScopeSectionTitle: Attribute.String &
+    homeSectionOneTitle: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    servicesSectionTitle: Attribute.String &
+    homeSectionTwoTitle: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    projectSectionTittle: Attribute.String &
+    homeSectionThreeTittle: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    projectSectionDescription: Attribute.RichText &
+    homeSectionThreeDescription: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    technologiesSectionTitle: Attribute.Text &
+    homeSectionFiveTitle: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    technologiesSectionDescription: Attribute.Text &
+    homeSectionFiveDescription: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    testimonialsSectionTitle: Attribute.Text &
+    homeSectionSixTitle: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    testimonialsSectionDescription: Attribute.Text &
+    homeSectionSixDescription: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    videoInterviewsSectionTitle: Attribute.Text &
+    homeSectionSevenTitle: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    videoInterviewsSectionDescription: Attribute.Text &
+    homeSectionSevenDescription: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    thinkAboutSectionTitle: Attribute.Text &
+    homeSectionEightTitle: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    thinkAboutSectionDescription: Attribute.Text &
+    homeSectionEightDescription: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    expertiseSectionTitle: Attribute.Text &
+    homeSectionNineTitle: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    advantagesSectionTitle: Attribute.Text &
+    homeSectionTenTitle: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+      }>;
+    homeSectionFourTittle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    homeSectionFourDescription: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    heroSectionBg: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
         };
       }>;
     createdAt: Attribute.DateTime;
@@ -983,6 +1462,7 @@ export interface ApiHomeSection3HomeSection3 extends Schema.CollectionType {
     singularName: 'home-section-3';
     pluralName: 'home-section-3s';
     displayName: 'Home Section 3';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1011,17 +1491,10 @@ export interface ApiHomeSection3HomeSection3 extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    content: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor.CKEditor',
-        {
-          output: 'HTML';
-          preset: 'rich';
-        }
-      > &
+    tab: Attribute.Component<'tab.tab1', true> &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     createdAt: Attribute.DateTime;
@@ -1043,6 +1516,218 @@ export interface ApiHomeSection3HomeSection3 extends Schema.CollectionType {
       'api::home-section-3.home-section-3',
       'oneToMany',
       'api::home-section-3.home-section-3'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHomeSection5HomeSection5 extends Schema.CollectionType {
+  collectionName: 'home_section_5s';
+  info: {
+    singularName: 'home-section-5';
+    pluralName: 'home-section-5s';
+    displayName: 'Home Section 5';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    reviewPlateForm: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    details: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    designation: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    photo: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    logo: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    ProjectName: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    countryName: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    countryFlag: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-section-5.home-section-5',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-section-5.home-section-5',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home-section-5.home-section-5',
+      'oneToMany',
+      'api::home-section-5.home-section-5'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHomeSection6CatagoryHomeSection6Catagory
+  extends Schema.CollectionType {
+  collectionName: 'home_section_6_catagories';
+  info: {
+    singularName: 'home-section-6-catagory';
+    pluralName: 'home-section-6-catagories';
+    displayName: 'Home Section 6 catagory';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    home_section_6s: Attribute.Relation<
+      'api::home-section-6-catagory.home-section-6-catagory',
+      'oneToMany',
+      'api::home-section-six.home-section-six'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-section-6-catagory.home-section-6-catagory',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-section-6-catagory.home-section-6-catagory',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home-section-6-catagory.home-section-6-catagory',
+      'oneToMany',
+      'api::home-section-6-catagory.home-section-6-catagory'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHomeSectionEightHomeSectionEight
+  extends Schema.CollectionType {
+  collectionName: 'home_section_eights';
+  info: {
+    singularName: 'home-section-eight';
+    pluralName: 'home-section-eights';
+    displayName: 'Home Section 8';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    photo: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-section-eight.home-section-eight',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-section-eight.home-section-eight',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home-section-eight.home-section-eight',
+      'oneToMany',
+      'api::home-section-eight.home-section-eight'
     >;
     locale: Attribute.String;
   };
@@ -1206,13 +1891,90 @@ export interface ApiHomeSectionOneHomeSectionOne extends Schema.CollectionType {
   };
 }
 
-export interface ApiTopDownFooterOfficeTopDownFooterOffice
+export interface ApiHomeSectionSevenHomeSectionSeven
   extends Schema.CollectionType {
-  collectionName: 'top_down_footer_offices';
+  collectionName: 'home_section_sevens';
   info: {
-    singularName: 'top-down-footer-office';
-    pluralName: 'top-down-footer-offices';
-    displayName: 'Top Down Footer Office';
+    singularName: 'home-section-seven';
+    pluralName: 'home-section-sevens';
+    displayName: 'Home Section 7';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    designation: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    photo: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-section-seven.home-section-seven',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-section-seven.home-section-seven',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home-section-seven.home-section-seven',
+      'oneToMany',
+      'api::home-section-seven.home-section-seven'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHomeSectionSixHomeSectionSix extends Schema.CollectionType {
+  collectionName: 'home_section_sixs';
+  info: {
+    singularName: 'home-section-six';
+    pluralName: 'home-section-sixs';
+    displayName: 'Home Section 6';
     description: '';
   };
   options: {
@@ -1224,44 +1986,119 @@ export interface ApiTopDownFooterOfficeTopDownFooterOffice
     };
   };
   attributes: {
-    country: Attribute.String &
+    home_section_6_catagory: Attribute.Relation<
+      'api::home-section-six.home-section-six',
+      'manyToOne',
+      'api::home-section-6-catagory.home-section-6-catagory'
+    >;
+    title: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    location: Attribute.Text &
+    date: Attribute.Date &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    phone: Attribute.Text &
+    videourl: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
-      }> &
-      Attribute.DefaultTo<'+'>;
+      }>;
+    videoduration: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    thumbnail: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::top-down-footer-office.top-down-footer-office',
+      'api::home-section-six.home-section-six',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::top-down-footer-office.top-down-footer-office',
+      'api::home-section-six.home-section-six',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      'api::top-down-footer-office.top-down-footer-office',
+      'api::home-section-six.home-section-six',
       'oneToMany',
-      'api::top-down-footer-office.top-down-footer-office'
+      'api::home-section-six.home-section-six'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiNavigatinLinkNavigatinLink extends Schema.CollectionType {
+  collectionName: 'navigatin_links';
+  info: {
+    singularName: 'navigatin-link';
+    pluralName: 'navigatin-links';
+    displayName: 'Top Footer Col 1';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    link: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::navigatin-link.navigatin-link',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::navigatin-link.navigatin-link',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::navigatin-link.navigatin-link',
+      'oneToMany',
+      'api::navigatin-link.navigatin-link'
     >;
     locale: Attribute.String;
   };
@@ -1273,7 +2110,8 @@ export interface ApiTopFooterCompanyTopFooterCompany
   info: {
     singularName: 'top-footer-company';
     pluralName: 'top-footer-companies';
-    displayName: 'Top Footer Company';
+    displayName: 'Top Footer Col 5';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1320,67 +2158,13 @@ export interface ApiTopFooterCompanyTopFooterCompany
   };
 }
 
-export interface ApiTopFooterIndustrieTopFooterIndustrie
-  extends Schema.CollectionType {
-  collectionName: 'top_footer_industries';
-  info: {
-    singularName: 'top-footer-industrie';
-    pluralName: 'top-footer-industries';
-    displayName: 'Top Footer Industrie';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    title: Attribute.Text &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    link: Attribute.Text &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::top-footer-industrie.top-footer-industrie',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::top-footer-industrie.top-footer-industrie',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::top-footer-industrie.top-footer-industrie',
-      'oneToMany',
-      'api::top-footer-industrie.top-footer-industrie'
-    >;
-    locale: Attribute.String;
-  };
-}
-
 export interface ApiTopFooterProjectTopFooterProject
   extends Schema.CollectionType {
   collectionName: 'top_footer_projects';
   info: {
     singularName: 'top-footer-project';
     pluralName: 'top-footer-projects';
-    displayName: 'Top Footer Project';
+    displayName: 'Top Footer Col 4';
     description: '';
   };
   options: {
@@ -1434,7 +2218,7 @@ export interface ApiTopFooterServiceTopFooterService
   info: {
     singularName: 'top-footer-service';
     pluralName: 'top-footer-services';
-    displayName: 'Top Footer Service';
+    displayName: 'Top Footer Col 3';
     description: '';
   };
   options: {
@@ -1488,7 +2272,8 @@ export interface ApiTopFooterTechStackTopFooterTechStack
   info: {
     singularName: 'top-footer-tech-stack';
     pluralName: 'top-footer-tech-stacks';
-    displayName: 'Top Footer Tech Stack';
+    displayName: 'Top Footer Col 2';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1549,19 +2334,31 @@ declare module '@strapi/types' {
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
+      'plugin::ezforms.submission': PluginEzformsSubmission;
+      'plugin::ezforms.recipient': PluginEzformsRecipient;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::contact-us-form-category.contact-us-form-category': ApiContactUsFormCategoryContactUsFormCategory;
+      'api::contact-us-form-text.contact-us-form-text': ApiContactUsFormTextContactUsFormText;
+      'api::footer-contact-us.footer-contact-us': ApiFooterContactUsFooterContactUs;
+      'api::fotter-social-media.fotter-social-media': ApiFotterSocialMediaFotterSocialMedia;
+      'api::general.general': ApiGeneralGeneral;
+      'api::header-menu.header-menu': ApiHeaderMenuHeaderMenu;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::home-section-2.home-section-2': ApiHomeSection2HomeSection2;
       'api::home-section-3.home-section-3': ApiHomeSection3HomeSection3;
+      'api::home-section-5.home-section-5': ApiHomeSection5HomeSection5;
+      'api::home-section-6-catagory.home-section-6-catagory': ApiHomeSection6CatagoryHomeSection6Catagory;
+      'api::home-section-eight.home-section-eight': ApiHomeSectionEightHomeSectionEight;
       'api::home-section-four.home-section-four': ApiHomeSectionFourHomeSectionFour;
       'api::home-section-nine.home-section-nine': ApiHomeSectionNineHomeSectionNine;
       'api::home-section-one.home-section-one': ApiHomeSectionOneHomeSectionOne;
-      'api::top-down-footer-office.top-down-footer-office': ApiTopDownFooterOfficeTopDownFooterOffice;
+      'api::home-section-seven.home-section-seven': ApiHomeSectionSevenHomeSectionSeven;
+      'api::home-section-six.home-section-six': ApiHomeSectionSixHomeSectionSix;
+      'api::navigatin-link.navigatin-link': ApiNavigatinLinkNavigatinLink;
       'api::top-footer-company.top-footer-company': ApiTopFooterCompanyTopFooterCompany;
-      'api::top-footer-industrie.top-footer-industrie': ApiTopFooterIndustrieTopFooterIndustrie;
       'api::top-footer-project.top-footer-project': ApiTopFooterProjectTopFooterProject;
       'api::top-footer-service.top-footer-service': ApiTopFooterServiceTopFooterService;
       'api::top-footer-tech-stack.top-footer-tech-stack': ApiTopFooterTechStackTopFooterTechStack;

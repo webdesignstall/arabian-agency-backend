@@ -4,7 +4,8 @@
   "info": {
     "singularName": "top-footer-tech-stack",
     "pluralName": "top-footer-tech-stacks",
-    "displayName": "Top Footer Tech Stack"
+    "displayName": "Top Footer Col 2",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
